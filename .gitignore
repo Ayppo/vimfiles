@@ -1,0 +1,7 @@
+tags
+swapfiles/*
+undofiles/*
+sessionfiles/*
+bundle
+wikifiles/
+*.tar.gz

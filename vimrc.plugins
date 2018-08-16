@@ -1,0 +1,107 @@
+" Modeline and Notes {
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldenable foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
+" Some useful plugins. Feel free to add your own favorite plugins.
+" }
+
+" Begin {
+    if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
+        !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    endif
+    set nocompatible                  " Must be first line
+    filetype off                      " required
+    set background=dark               " Assume a dark background
+    set rtp+=~/.vim/bundle/Vundle.vim " runtime path
+    call vundle#begin()
+" }
+
+" Plugins {
+    if !exists('g:plugin_groups')
+        let g:plugin_groups=['general', 'ui', 'writing', 'programming', 'php', 'python', 'html']
+    endif
+
+    " Deps {
+        Plugin 'VundleVim/Vundle.vim'
+    " }
+
+    " General {
+        if count(g:plugin_groups, 'general')
+            Plugin 'sjl/gundo.vim'
+            Plugin 'kien/ctrlp.vim'
+            Plugin 'vimwiki/vimwiki'
+            Plugin 'mileszs/ack.vim'
+            Plugin 'airblade/vim-rooter'
+            Plugin 'scrooloose/nerdtree'
+            Plugin 'tacahiroy/ctrlp-funky'
+            Plugin 'vim-scripts/CmdlineComplete'
+            Plugin 'ianva/vim-youdao-translater'
+        endif
+    " }
+
+    " UI {
+        if count(g:plugin_groups, 'ui')
+            Plugin 'ap/vim-buftabline'
+            Plugin 'mhinz/vim-signify'
+            Plugin 'mhinz/vim-startify'
+            Plugin 'luochen1990/rainbow'
+            Plugin 'sheerun/vim-polyglot'
+            Plugin 'itchyny/lightline.vim'
+            Plugin 'flazz/vim-colorschemes'
+            Plugin 'Xuyuanp/nerdtree-git-plugin'
+            Plugin 'nathanaelkane/vim-indent-guides'
+        endif
+    " }
+
+    " Writing {
+        if count(g:plugin_groups, 'writing')
+            Plugin 'tpope/vim-repeat'
+            Plugin 'tpope/vim-surround'
+            Plugin 'jiangmiao/auto-pairs'
+            Plugin 'junegunn/vim-easy-align'
+            Plugin 'easymotion/vim-easymotion'
+            Plugin 'terryma/vim-multiple-cursors'
+        endif
+    " }
+
+    " Programming {
+        if count(g:plugin_groups, 'programming')
+            Plugin 'w0rp/ale'
+            Plugin 'junegunn/gv.vim'
+            Plugin 'tpope/vim-fugitive'
+            Plugin 'scrooloose/nerdcommenter'
+            if executable('ctags')
+                Plugin 'majutsushi/tagbar'
+                Plugin 'ludovicchabant/vim-gutentags'
+            endif
+            " Complete & Snippets {
+                Plugin 'SirVer/ultisnips'
+                Plugin 'honza/vim-snippets'
+                Plugin 'ajh17/VimCompletesMe'
+            " }
+        endif
+    " }
+
+    " PHP {
+        if count(g:plugin_groups, 'php')
+            " Add your php plugins here
+        endif
+    " }
+
+    " Python {
+        if count(g:plugin_groups, 'python')
+            " Add your python plugins here
+        endif
+    " }
+
+    " HTML {
+        if count(g:plugin_groups, 'html')
+            Plugin 'mattn/emmet-vim'
+            Plugin 'ap/vim-css-color'
+        endif
+    " }
+" }
+
+" End {
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+" }
