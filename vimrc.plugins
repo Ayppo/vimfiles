@@ -4,79 +4,64 @@
 " Some useful plugins. Feel free to add your own favorite plugins.
 " }
 
-" Begin {
-    if !isdirectory(expand("~/.vim/bundle/Vundle.vim"))
-        !git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    endif
-    set nocompatible                  " Must be first line
-    filetype off                      " required
-    set background=dark               " Assume a dark background
-    set rtp+=~/.vim/bundle/Vundle.vim " runtime path
-    call vundle#begin()
-" }
+call plug#begin('~/.vim/bundle')
 
 " Plugins {
     if !exists('g:plugin_groups')
         let g:plugin_groups=['general', 'ui', 'writing', 'programming', 'php', 'python', 'html']
     endif
 
-    " Deps {
-        Plugin 'VundleVim/Vundle.vim'
-    " }
-
     " General {
         if count(g:plugin_groups, 'general')
-            Plugin 'sjl/gundo.vim'
-            Plugin 'kien/ctrlp.vim'
-            Plugin 'vimwiki/vimwiki'
-            Plugin 'mileszs/ack.vim'
-            Plugin 'airblade/vim-rooter'
-            Plugin 'scrooloose/nerdtree'
-            Plugin 'tacahiroy/ctrlp-funky'
-            Plugin 'vim-scripts/CmdlineComplete'
-            Plugin 'ianva/vim-youdao-translater'
+            Plug 'sjl/gundo.vim'
+            Plug 'kien/ctrlp.vim'
+            Plug 'mileszs/ack.vim'
+            Plug 'airblade/vim-rooter'
+            Plug 'scrooloose/nerdtree'
+            Plug 'tacahiroy/ctrlp-funky'
+            Plug 'vim-scripts/CmdlineComplete'
+            Plug 'ianva/vim-youdao-translater'
         endif
     " }
 
     " UI {
         if count(g:plugin_groups, 'ui')
-            Plugin 'ap/vim-buftabline'
-            Plugin 'mhinz/vim-signify'
-            Plugin 'mhinz/vim-startify'
-            Plugin 'luochen1990/rainbow'
-            Plugin 'sheerun/vim-polyglot'
-            Plugin 'itchyny/lightline.vim'
-            Plugin 'flazz/vim-colorschemes'
-            Plugin 'Xuyuanp/nerdtree-git-plugin'
-            Plugin 'nathanaelkane/vim-indent-guides'
+            Plug 'ap/vim-buftabline'
+            Plug 'mhinz/vim-signify'
+            Plug 'mhinz/vim-startify'
+            Plug 'luochen1990/rainbow'
+            Plug 'sheerun/vim-polyglot'
+            Plug 'itchyny/lightline.vim'
+            Plug 'flazz/vim-colorschemes'
+            Plug 'Xuyuanp/nerdtree-git-plugin'
+            Plug 'nathanaelkane/vim-indent-guides'
         endif
     " }
 
     " Writing {
         if count(g:plugin_groups, 'writing')
-            Plugin 'tpope/vim-repeat'
-            Plugin 'tpope/vim-surround'
-            Plugin 'jiangmiao/auto-pairs'
-            Plugin 'junegunn/vim-easy-align'
-            Plugin 'easymotion/vim-easymotion'
-            Plugin 'terryma/vim-multiple-cursors'
+            Plug 'tpope/vim-repeat'
+            Plug 'tpope/vim-surround'
+            Plug 'jiangmiao/auto-pairs'
+            Plug 'junegunn/vim-easy-align'
+            Plug 'easymotion/vim-easymotion'
+            Plug 'terryma/vim-multiple-cursors'
         endif
     " }
 
     " Programming {
         if count(g:plugin_groups, 'programming')
-            Plugin 'w0rp/ale'
-            Plugin 'junegunn/gv.vim'
-            Plugin 'tpope/vim-fugitive'
-            Plugin 'scrooloose/nerdcommenter'
+            Plug 'w0rp/ale'
+            Plug 'junegunn/gv.vim'
+            Plug 'tpope/vim-fugitive'
+            Plug 'scrooloose/nerdcommenter'
             if executable('ctags')
-                Plugin 'majutsushi/tagbar'
-                Plugin 'ludovicchabant/vim-gutentags'
+                Plug 'ludovicchabant/vim-gutentags'
             endif
             " Complete & Snippets {
-                Plugin 'SirVer/ultisnips'
-                Plugin 'honza/vim-snippets'
-                Plugin 'ajh17/VimCompletesMe'
+                Plug 'SirVer/ultisnips'
+                Plug 'honza/vim-snippets'
+                Plug 'ajh17/VimCompletesMe'
             " }
         endif
     " }
@@ -95,13 +80,10 @@
 
     " HTML {
         if count(g:plugin_groups, 'html')
-            Plugin 'mattn/emmet-vim'
-            Plugin 'ap/vim-css-color'
+            Plug 'mattn/emmet-vim'
+            Plug 'ap/vim-css-color'
         endif
     " }
 " }
 
-" End {
-    call vundle#end()            " required
-    filetype plugin indent on    " required
-" }
+call plug#end()

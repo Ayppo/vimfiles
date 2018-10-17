@@ -28,10 +28,12 @@
         set lazyredraw                       " Don't update screen during macro and script execution
         set backspace=indent,eol,start       " Allow backspacing over indention, line breaks and insertion start
         set ttyfast                          " More characters sent to the screen for redrawing
+        set tags=./.tags;,.tags              " Set tags file name and path
     " }
 
     " Completion {
         set shortmess+=c                     " Shut off completion messages
+        set complete-=i                      " Turn off complete from include files
         " User dictionary for <c-x><c-k>
         set dictionary+=~/.vim/dictionary/google-10000-english-usa-no-swears.txt
         autocmd FileType php            setlocal complete+=k~/.vim/dictionary/PHP.dict
@@ -75,11 +77,6 @@
         set list                        " Enable display invisible characters
         set listchars=tab:›\ ,trail:•,extends:‹,nbsp:⋅ " Highlight problematic whitespace
         set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1 " Set fileencoding list
-        " Markdown {
-            " Highlight language codes
-            let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'php']
-            let g:markdown_syntax_conceal = 0
-        " }
     " }
 
     " User Interface {
@@ -129,7 +126,7 @@
         iabbrev vedio video
         iabbrev Vedio Video
         iabbrev teh the
-        iabbrev xdt <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+        iabbrev xdt <c-r>=strftime("%Y-%m-%d %H:%M:%S")<cr>
         command! -bang -nargs=* -complete=file E e<bang> <args>
         command! -bang -nargs=* -complete=file W w<bang> <args>
         command! -bang -nargs=* -complete=file Wq wq<bang> <args>
@@ -155,7 +152,7 @@
             autocmd filetype c,cpp,java,go,php,javascript,puppet autocmd bufwritepre <buffer> call <sid>StripTrailingWhitespaces()
             " Specific settings for languages
             autocmd filetype java,makefile setlocal noexpandtab
-            autocmd filetype ruby,shell,markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+            autocmd filetype ruby,shell,markdown,htmldjango,html,css setlocal tabstop=2 shiftwidth=2 softtabstop=2
             " Auto close preview window while lease insert model
             autocmd InsertLeave * pclose
             " Enable folder
@@ -187,8 +184,6 @@
     nnoremap <leader>bq :bn <bar> bd #<cr>
     nnoremap <leader>bl :ls<cr>
     nnoremap <leader>bu :buffer 
-    " Open/close relative line number
-    nnoremap <leader>nn :call ToggleNumber()<cr>
     " Move vertically by visual line
     nnoremap j gj
     nnoremap k gk
@@ -265,7 +260,7 @@
 
     " EasyMotion {
         if isdirectory(expand("~/.vim/bundle/vim-easymotion"))
-            let g:EasyMotion_smartcase = 0
+            " let g:EasyMotion_smartcase = 0
             nmap gc <Plug>(easymotion-overwin-f)
             nmap gw <Plug>(easymotion-overwin-f2)
         endif
@@ -397,13 +392,20 @@
     " vim-gutentags {
         if isdirectory(expand("~/.vim/bundle/vim-gutentags"))
             " User defined root markers
-            let g:gutentags_project_root = ['.project']
-        endif
-    " }
+            let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
+            " Set tags file name
+            let g:gutentags_ctags_tagfile = '.tags'
+            " Set tags directory
+            let s:vim_tags = expand('~/.cache/tags')
+            if !isdirectory(s:vim_tags)
+                silent! call mkdir(s:vim_tags, 'p')
+            endif
+            let g:gutentags_cache_dir = s:vim_tags
+            " Set options
+            let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+            let g:gutentags_ctags_extra_args += ['--c++-kinds=+px']
+            let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
-    " tagbar {
-        if isdirectory(expand("~/.vim/bundle/tagbar"))
-            nmap <leader>tt :TagbarToggle<CR>
         endif
     " }
 
@@ -703,26 +705,9 @@
         endif
     " }
 
-    " vimwiki {
-        if isdirectory(expand("~/.vim/bundle/vimwiki/"))
-            let g:vimwiki_list = [{'path': '~/.vim/wikifiles/'}]
-            map <Leader>da <Plug>VimwikiToggleListItem
-        endif
-    " }
 " }
 
 " Functions {
-    " Toggle between number and relativenumber
-    function! ToggleNumber() " {
-        if(&relativenumber == 1)
-            set norelativenumber
-            set number
-        else
-            set number
-            set relativenumber
-        endif
-    endfunction " }
-
     " Strips trailing whitespace at the end of files
     function! <sid>StripTrailingWhitespaces() " {
         " Save last search & cursor position
