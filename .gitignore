@@ -1,4 +1,5 @@
 swapfiles/*
 undofiles/*
 sessionfiles/*
-bundle
+plugins/
+view/

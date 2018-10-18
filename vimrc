@@ -157,6 +157,9 @@
             autocmd InsertLeave * pclose
             " Enable folder
             autocmd filetype php,cpp,c set foldmethod=marker foldmarker={,}
+            " Auto save & load view
+            autocmd BufWinLeave *.* mkview!
+            autocmd BufWinEnter *.* silent loadview
         augroup end
     " }
 
