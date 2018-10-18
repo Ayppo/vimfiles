@@ -229,13 +229,13 @@
 
 " Plugins Config {
     " colorscheme {
-        if isdirectory(expand("~/.vim/bundle/vim-colorschemes"))
+        if isdirectory(expand("~/.vim/plugins/vim-colorschemes"))
             colorscheme gruvbox
         endif
     " }
 
     " nerdtree {
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
+        if isdirectory(expand("~/.vim/plugins/nerdtree"))
             noremap <c-e> :NERDTreeToggle<cr>
             let g:NERDTreeShowBookmarks=1
             let g:NERDTreeWinSize=25
@@ -247,7 +247,7 @@
             " Quit vim while no buffer exists
             autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
             " Auto open NERDTree while no file specified
-            if isdirectory(expand("~/.vim/bundle/vim-startify/"))
+            if isdirectory(expand("~/.vim/plugins/vim-startify/"))
                 autocmd VimEnter * if !argc() | Startify | NERDTree | wincmd w | endif
             else
                 autocmd vimenter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -256,13 +256,13 @@
     " }
 
     " gundo.vim {
-        if isdirectory(expand("~/.vim/bundle/gundo.vim"))
+        if isdirectory(expand("~/.vim/plugins/gundo.vim"))
             nnoremap <leader>u :GundoToggle<cr>
         endif
     " }
 
     " EasyMotion {
-        if isdirectory(expand("~/.vim/bundle/vim-easymotion"))
+        if isdirectory(expand("~/.vim/plugins/vim-easymotion"))
             " let g:EasyMotion_smartcase = 0
             nmap gc <Plug>(easymotion-overwin-f)
             nmap gw <Plug>(easymotion-overwin-f2)
@@ -270,13 +270,13 @@
     " }
 
     " ack {
-        if isdirectory(expand("~/.vim/bundle/ack.vim"))
+        if isdirectory(expand("~/.vim/plugins/ack.vim"))
             nnoremap <leader>a :Ack 
         endif
     " }
 
     " ctrlp {
-        if isdirectory(expand("~/.vim/bundle/ctrlp.vim"))
+        if isdirectory(expand("~/.vim/plugins/ctrlp.vim"))
             let g:ctrlp_map='<leader>p'
             let g:ctrlp_cmd='CtrlP'
             noremap <leader>m :CtrlPMRU<cr>
@@ -305,7 +305,7 @@
                 \ 'fallback': s:ctrlp_fallback
             \ }
             " ctrlpfunky {
-                if isdirectory(expand('~/.vim/bundle/ctrlp-funky'))
+                if isdirectory(expand('~/.vim/plugins/ctrlp-funky'))
                     let g:ctrlp_extensions = ['funky']
                     nnoremap <leader>fu :CtrlPFunky<cr>
                     " Narrow the list down with a word under cursor
@@ -318,7 +318,7 @@
     " }
 
     " Rainbow {
-        if isdirectory(expand('~/.vim/bundle/rainbow'))
+        if isdirectory(expand('~/.vim/plugins/rainbow'))
             let g:rainbow_active = 1
             let g:rainbow_conf = {
             \    'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
@@ -351,7 +351,7 @@
     " }
 
     " Fugitive {
-        if isdirectory(expand("~/.vim/bundle/vim-fugitive/"))
+        if isdirectory(expand("~/.vim/plugins/vim-fugitive/"))
             nnoremap <silent> <leader>gs :Gstatus<CR>
             nnoremap <silent> <leader>gd :Gdiff<CR>
             nnoremap <silent> <leader>gc :Gcommit<CR>
@@ -366,14 +366,14 @@
     " }
 
     " signify {
-        if isdirectory(expand("~/.vim/bundle/vim-signify"))
+        if isdirectory(expand("~/.vim/plugins/vim-signify"))
             nnoremap <silent> <leader>gg :SignifyToggle<CR>
         endif
 
     " }
 
     " vim-indent-guides {
-        if isdirectory(expand("~/.vim/bundle/vim-indent-guides"))
+        if isdirectory(expand("~/.vim/plugins/vim-indent-guides"))
             let g:indent_guides_enable_on_vim_startup = 1
             let g:indent_guides_guide_size = 1
             let g:indent_guides_start_level = 2
@@ -382,7 +382,7 @@
     " }
 
     " nerdcommenter {
-        if isdirectory(expand("~/.vim/bundle/nerdcommenter"))
+        if isdirectory(expand("~/.vim/plugins/nerdcommenter"))
             " Add spaces after comment delimiters by default
             " let g:NERDSpaceDelims = 1
             " Use compact syntax for prettified multi-line comments
@@ -393,7 +393,7 @@
     " }
 
     " vim-gutentags {
-        if isdirectory(expand("~/.vim/bundle/vim-gutentags"))
+        if isdirectory(expand("~/.vim/plugins/vim-gutentags"))
             " User defined root markers
             let g:gutentags_project_root = ['.root', '.svn', '.git', '.hg', '.project']
             " Set tags file name
@@ -413,7 +413,7 @@
     " }
 
     " lightline.vim {
-        if isdirectory(expand("~/.vim/bundle/lightline.vim"))
+        if isdirectory(expand("~/.vim/plugins/lightline.vim"))
             set noshowmode " Do not show current mode in command line
             let g:lightline = {
                 \ 'colorscheme': 'wombat',
@@ -535,7 +535,7 @@
     " }
 
     " ale {
-        if isdirectory(expand("~/.vim/bundle/ale"))
+        if isdirectory(expand("~/.vim/plugins/ale"))
             " let g:ale_fixers = {
             " \   'javascript': ['eslint'],
             " \}
@@ -553,7 +553,7 @@
     " }
 
     " vim-buftabline {
-        if isdirectory(expand("~/.vim/bundle/vim-buftabline"))
+        if isdirectory(expand("~/.vim/plugins/vim-buftabline"))
             let g:buftabline_indicators = 1
             hi BufCurrent term=reverse ctermfg=235 ctermbg=208 guifg=#282828 guibg=#fe8019
             hi BufActive cterm=reverse gui=reverse
@@ -565,7 +565,7 @@
     " }
 
     " Ultisnips {
-        if isdirectory(expand("~/.vim/bundle/ultisnips/"))
+        if isdirectory(expand("~/.vim/plugins/ultisnips/"))
             let g:UltiSnipsListSnippets="<c-b>"
             let g:UltiSnipsExpandTrigger="<c-k>"
             let g:UltiSnipsJumpForwardTrigger="<c-l>"
@@ -620,7 +620,7 @@
     " }
 
     " nerdtree-git {
-        if isdirectory(expand("~/.vim/bundle/nerdtree-git-plugin/"))
+        if isdirectory(expand("~/.vim/plugins/nerdtree-git-plugin/"))
             let g:NERDTreeIndicatorMapCustom = {
                 \ "Modified"  : "✹",
                 \ "Staged"    : "✚",
@@ -637,7 +637,7 @@
     " }
 
     " youdao-translater {
-        if isdirectory(expand("~/.vim/bundle/vim-youdao-translater/"))
+        if isdirectory(expand("~/.vim/plugins/vim-youdao-translater/"))
             vnoremap <silent> <C-T> :<C-u>Ydv<CR>
             nnoremap <silent> <C-T> :<C-u>Ydc<CR>
             noremap <leader>yd :<C-u>Yde<CR>
@@ -645,14 +645,14 @@
     " }
 
     " easy-align {
-        if isdirectory(expand("~/.vim/bundle/vim-easy-align/"))
+        if isdirectory(expand("~/.vim/plugins/vim-easy-align/"))
             xmap ga <Plug>(EasyAlign)
             nmap ga <Plug>(EasyAlign)
         endif
     " }
 
     " gv {
-        if isdirectory(expand("~/.vim/bundle/gv.vim/"))
+        if isdirectory(expand("~/.vim/plugins/gv.vim/"))
             nnoremap <leader>gv :GV<cr>
             xnoremap <leader>gv :GV<cr>
             nnoremap <leader>g. :GV!<cr>
@@ -662,7 +662,7 @@
     " }
 
     " startify {
-        if isdirectory(expand("~/.vim/bundle/vim-startify/"))
+        if isdirectory(expand("~/.vim/plugins/vim-startify/"))
             let g:startify_enable_special      = 0
             let g:startify_files_number        = 8
             let g:startify_change_to_dir       = 1
@@ -700,7 +700,7 @@
     " }
 
     " Rooter {
-        if isdirectory(expand("~/.vim/bundle/vim-rooter/"))
+        if isdirectory(expand("~/.vim/plugins/vim-rooter/"))
             let g:rooter_patterns = ['.project', '.git/']
             let g:rooter_resolve_links = 1
             let g:rooter_silent_chdir = 1
