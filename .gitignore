@@ -3,3 +3,4 @@ undofiles/*
 sessionfiles/*
 plugins/
 view/
+autoload/
